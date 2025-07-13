@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 
 interface ContactForm {
   name: string;
@@ -77,27 +78,41 @@ export class ContactComponent {
     if (this.isFormValid()) {
       this.isSubmitting = true;
 
-      const subject = encodeURIComponent(this.contactForm.subject);
-      const body = encodeURIComponent(
-        `Name: ${this.contactForm.name}\n` +
-        `Email: ${this.contactForm.email}\n\n` +
-        `Message:\n${this.contactForm.message}`
-      );
-      const mailtoLink = `mailto:hetbpatel203@gmail.com?subject=${subject}&body=${body}`;
+      const templateParams = {
+        from_name: this.contactForm.name,
+        from_email: this.contactForm.email,
+        subject: this.contactForm.subject,
+        message: this.contactForm.message,
+        to_email: 'hetbpatel203@gmail.com'
+      };
 
-      window.location.href = mailtoLink;
-
-      setTimeout(() => {
-        this.isSubmitting = false;
-        this.submitSuccess = true;
-        this.submitMessage = 'Email client opened! Please send the email.';
-        this.resetForm();
-
-        setTimeout(() => {
-          this.submitMessage = '';
+      emailjs.send(
+        'service_portfolio', // Replace with your EmailJS service ID
+        'template_contact',  // Replace with your EmailJS template ID
+        templateParams,
+        'your_public_key'    // Replace with your EmailJS public key
+      ).then(
+        (response) => {
+          this.isSubmitting = false;
+          this.submitSuccess = true;
+          this.submitMessage = 'Message sent successfully!';
+          this.resetForm();
+          
+          setTimeout(() => {
+            this.submitMessage = '';
+            this.submitSuccess = false;
+          }, 5000);
+        },
+        (error) => {
+          this.isSubmitting = false;
           this.submitSuccess = false;
-        }, 5000);
-      }, 1000);
+          this.submitMessage = 'Failed to send message. Please try again.';
+          
+          setTimeout(() => {
+            this.submitMessage = '';
+          }, 5000);
+        }
+      );
     } else {
       this.submitSuccess = false;
       this.submitMessage = 'Please fill in all required fields.';
