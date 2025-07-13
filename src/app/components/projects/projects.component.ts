@@ -27,15 +27,15 @@ export class ProjectsComponent {
       description: 'A full-featured e-commerce application built with Angular, featuring product catalog, shopping cart, and user authentication.',
       technologies: ['Angular', 'TypeScript', 'Tailwind'],
       demoUrl: 'https://demo-ecommerce.com',
-      githubUrl: 'https://github.com/hetpatel/ecommerce',
+      githubUrl: 'https://github.com/hetpatel203/e-commerce-web-app',
       icon: '🛒',
       gradient: 'from-blue-400 to-blue-600'
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'A productivity app for managing tasks and projects with drag-and-drop functionality, real-time updates, and team collaboration features.',
-      technologies: ['Angular', 'RxJS', 'Material UI'],
+      title: 'Multi-User Task Manager',
+      description: ' Built a Django-based multi-user Todo app with authentication, task assignment, and deadline tracking. Implemented user management for improved productivity.',
+      technologies: ['Angular', 'Django ', 'python'],
       demoUrl: 'https://demo-taskmanager.com',
       githubUrl: 'https://github.com/hetpatel/taskmanager',
       icon: '📋',
@@ -73,11 +73,11 @@ export class ProjectsComponent {
     },
     {
       id: 6,
-      title: 'Music Player App',
-      description: 'A modern music streaming application with playlist management, audio visualization, and social sharing features.',
-      technologies: ['Angular', 'Web Audio API', 'PWA'],
-      demoUrl: 'https://demo-music.com',
-      githubUrl: 'https://github.com/hetpatel/music',
+      title: 'My portfolio',
+      description: 'Modern portfolio website built with Angular 19 and Tailwind CSS, showcasing web development projects with responsive design and smooth animations.',
+      technologies: ['Angular', 'Tailwind CSS'],
+      demoUrl: 'http://localhost:4200/',
+      githubUrl: 'https://github.com/hetpatel203/my-portfolio',
       icon: '🎵',
       gradient: 'from-indigo-400 to-indigo-600'
     }
